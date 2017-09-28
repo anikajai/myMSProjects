@@ -1,0 +1,118 @@
+   ASSUMPTIONS
+
+	1. It is assumed that while executing the program, Relations_name text file exists.
+	2. When a query is entered, every token is separated by space or enter and it is terminated with a semicolon.
+	3. In SELECT query two tables are mentioned only in the case of join	
+	4. A varchar or string datatype attribute cannot have blank spaces in between.	
+	5. In CREATE query, with foreign_key constraint not_null and unique constraints cannot be mentioned.
+
+
+   KEYWORDS:
+        
+	CREATE, TABLE, TABLES, SELECT, FROM, WHERE, INSERT, INTO, DELETE, DROP, UPDATE, SET, VALUES, DESCRIBE, DISPLAY, ALL, 
+        EXIT, NULL, INT, CHAR, VARCHAR, FLOAT, BOOLEAN, DATE, PRIMARY_KEY , FOREIGN_KEY_REFERENCES, UNIQUE , NOT_NULL .
+  
+
+   ALLOWED DATATYPES:
+	String  : eg. "abcxyz"
+	Varchar : eg. "abc"       ( have a defined length)
+	Char    : eg. 'a' 
+	Int     : eg. 567
+	Date    : eg. 23-08-1989
+	Float   : eg. 0.12
+	Boolean : eg.T , F , NULL
+
+
+   ALLOWED CONSTRAINTS:
+	-primary_key 
+	-unique
+	-not_null
+	-foreign_key_references
+
+
+   POSSIBLE COMMANDS : 
+
+	CREATE    : TO CREATE A NEW RELATION
+	INSERT    : TO INSERT A TUPLE INTO A RELATION
+	SELECT    : TO DISPLAY THE SELECTED CONTENTS OF A RELATION
+
+
+
+1. Create command 
+
+   THIS COMMAND CREATES A NEW RELATION.
+
+   PROTOTYPE:
+
+   create table <tablename> ( <attribute1name> <attribute1type> <constraint1> <constraint2> , <attribute2name> <attribute2type> <constraint1> <constraint2> ,    .... , <attributeNname> <attributeNtype> <constraint1> <constraint2> );
+
+   where 
+   constraint1 is optional. ( and takes the value NULL by default )
+   constraint2 is optional. ( and takes the value NULL by default )
+   The possible values constraint1 can take are primary_key / not_null / unique / foreign_key_references 
+   The possible values constraint2 can take are 
+        constraint2 = NOT_NULL if constraint1 = UNIQUE
+        constraint2 = UNIQUE if constraint1 = NOT_NULL
+        constraint2 = <referenced_tablename>.<attrname> if constraint1 = FOREIGN_KEY_REFERENCES
+
+   EXAMPLE1:
+      create table student ( id int primary_key , name char not_null unique , d_adm date not_null , is_adult boolean );
+
+   EXAMPLE2:
+     create table course ( cname string unique , fname varchar unique not_null, id1 int foreign_key_references student.id );
+
+
+
+2. Insert command
+
+   THIS COMMAND INSERTS A TUPLE INTO A PRE-EXISTING TABLE.
+
+   PROTOTYPE:
+
+      insert into <tablename> values ( <attribute1val> , <attribute2val> , … , <attributenval> ); 
+
+
+   EXAMPLE:
+	insert into student values ( 101 , "abc" , 28-03-2000 , T , "xyz_abc" , 10.0 , 'b' );
+
+   EXAMPLE:
+	insert into employee values ( "comp" , 101 );
+
+
+
+3. Select command
+
+
+   THIS COMMAND DISPLAYS THE CONTENTS OF A RELATION AS SPECIFIED IN THE QUERY.
+
+   PROTOTYPE:
+
+   select <*/attribute names> from <tablename> where <condition1> and/or <condition2>;
+
+
+   Various formats possible for select query are:
+     select * from tablname;
+     select * from tablname where att1 relop value;
+     select * from tablename where att1 relop val1 and/or att2 relop val2;
+     select att1 , att2 , … , attn from tablename;
+     select att1 , att2 , … , attn from tablename where att1 relop value ;
+     select  att1 ,… , attn from tablename where att1 relop val1 and/or att2 relop val2;
+
+   EXAMPLE:
+        select * from student;
+   EXAMPLE:
+        select id from student where name = "abc";
+
+4. Join operation
+
+   To perform JOIN operation, the prototype is given as
+
+   select <*/attribute names> from <tablename1> , <tablename2> where <join_condition>;
+
+   Various formats possible are
+   select * from tab1 , tab2 where tab1.joinatt relop atb2.joinatt;
+
+   select att1 , att2 , … , attn from tab1 , tab2 where tab1.joinatt relop tab2.joinatt; 
+
+
+
