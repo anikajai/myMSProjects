@@ -1,0 +1,84 @@
+raw = OpenRead["C:\\Users\\anika_000\\Downloads\\reviews.csv"];
+reviews = Map[StringSplit[#, "|"] &, ReadList[raw, String]];
+DeleteDuplicates[Map[First[#] &, reviews]];
+headers = reviews[[1]]
+data = reviews[[1 + Range[Length@reviews - 1]]];
+positiveReviews = Select[reviews, #[[1]] == "positive" &];
+negativeReviews = Select[reviews, #[[1]] == "negative" &];
+randomPositiveReviews = RandomSample[positiveReviews, 5000];
+randomNegativeReviews = RandomSample[negativeReviews, 5000];
+randomPositiveLabels = randomPositiveReviews[[All, 1]];
+randomNegativeLabels = randomNegativeReviews[[All, 1]];
+randomPositiveTextReviews = randomPositiveReviews[[All, 2]];
+randomNegativeTextReviews = randomNegativeReviews[[All, 2]];
+
+
+prePositive = List[]; 
+Do[PrependTo[prePositive, 
+   StringDelete[
+    ToLowerCase[DeleteStopwords[randomPositiveTextReviews[[i]]]], 
+    RegularExpression["[\\.\"\',\!]"]]], {i, 1, 
+   Length@randomPositiveTextReviews}];
+prePositiveStem = WordStem[prePositive];
+
+
+preNegative = List[];
+Do[PrependTo[preNegative, 
+   StringDelete[
+    ToLowerCase[DeleteStopwords[randomNegativeTextReviews[[i]]]], 
+    RegularExpression["[\\.\"\',\!]"]]], {i, 1, 
+   Length@randomNegativeTextReviews}];
+preNegativeStem = WordStem[preNegative];
+preStem = Join[prePositiveStem, preNegativeStem];
+
+featureSet = FeatureExtraction[preStem, "TFIDF"];
+
+featureSetValues = featureSet[preStem];
+dr = DimensionReduce[featureSetValues, 100];
+sentimentFeatureList = Classify["Sentiment", preStem, "Probabilities"];
+sentimentProbabilities = Values[sentimentFeatureList];
+
+finalFeatureSet = List[];
+Do[PrependTo[finalFeatureSet, Join[dr[[i]], sentimentProbabilities[[i]]]], {i, 1, Length@sentimentProbabilities}];
+Dimensions[finalFeatureSet]
+positiveFeaturesTraining = finalFeatureSet[[1 ;; 4000]];
+negativeFeaturesTraining = finalFeatureSet[[5001 ;; 9000]];
+featuresTraining = Join[positiveFeaturesTraining, negativeFeaturesTraining];
+
+positiveFeaturesTest = finalFeatureSet[[4001 ;; 5000]];
+negativeFeaturesTest = finalFeatureSet[[9001 ;; 10000]];
+featuresTest = Join[positiveFeaturesTest, negativeFeaturesTest];
+labelTraining = Join[randomPositiveLabels[[1 ;; 4000]], randomNegativeLabels[[1 ;; 4000]]];
+
+labelTest = Join[randomPositiveLabels[[4001 ;; 5000]], randomNegativeLabels[[4001 ;; 5000]]];
+
+sentimentAnalysisRF = 
+  Classify[featuresTraining -> labelTraining, 
+   Method -> "RandomForest"];
+   
+cmRF = ClassifierMeasurements[sentimentAnalysisRF, 
+   featuresTest -> labelTest];
+   
+cmRF /@ {"Accuracy", "Precision", "Recall",  "ConfusionMatrixPlot", "ROCCurve"} // TableForm
+
+sentimentAnalysisNN = 
+  Classify[featuresTraining -> labelTraining, 
+   Method -> "NeuralNetwork"];
+   
+cmNN = ClassifierMeasurements[sentimentAnalysisNN, 
+   featuresTest -> labelTest];
+
+cmNN /@ {"Accuracy", "Precision", "Recall",  "ConfusionMatrixPlot", "ROCCurve"} // TableForm
+
+sentimentAnalysisSVM = 
+  Classify[featuresTraining -> labelTraining, 
+   Method -> "SupportVectorMachine"];
+
+cmSVM = ClassifierMeasurements[sentimentAnalysisSVM, 
+   featuresTest -> labelTest];
+
+cmSVM /@ {"Accuracy", "Precision", "Recall",  "ConfusionMatrixPlot", 
+   "ROCCurve"} // TableForm
+
+
+  
