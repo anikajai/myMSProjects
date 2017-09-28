@@ -1,2 +1,0 @@
-anika_jain_task1.jar needs first argument as path to users.dat file and second argument as ratings.dat file.
-anika_jain_task2.jar needs first argument as path to users.dat file, second argument as ratings.dat file and third argument as movies.dat file.
