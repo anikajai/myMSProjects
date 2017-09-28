@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="resource-data">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="record" maxOccurs="unbounded"
+					minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element type="xs:string" name="EmployeeID" />
+							<xs:element type="xs:date" name="DOJ" />
+							<xs:element type="xs:string" name="Skills" />
+							<xs:element type="xs:string" name="DomainExperience"
+								minOccurs="0" />
+							<xs:element type="xs:string" name="Rating" />
+							<xs:element type="xs:string" name="CommunicationsRating" />
+							<xs:element type="xs:string" name="NAGP" />
+							<xs:element type="xs:decimal" name="YearsOfExperience" />
+							<xs:element type="xs:string" name="CurrentRole"
+								minOccurs="0" />
+							<xs:element type="xs:string" name="PreviousCustomerExperience"
+								minOccurs="0" />
+							<xs:element type="xs:date" name="AvailableFromDate" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
