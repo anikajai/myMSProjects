@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Search On FB</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_add_to_fav">Add to Favorites</string>
+    <string name="action_remove_from_fav">Remove from Favorites</string>
+    <string name="no_albums">No albums available to display</string>
+    <string name="no_posts">No posts available to display</string>
+    <string name="facebook_app_id">396304287403004</string>
+    <string name="cloudURL"></string>
+</resources>

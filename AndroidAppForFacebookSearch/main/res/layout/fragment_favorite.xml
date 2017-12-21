@@ -1,0 +1,36 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="edu.usc.csci571.searchonfb.FavoriteFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+       <android.support.design.widget.TabLayout
+            android:id="@+id/fav_result_tablayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabGravity="fill"
+            app:tabMode="fixed"
+            app:tabIndicatorColor="@color/colortabUnderline"/>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/fav_result_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        <!--<TextView
+            android:id="@+id/fav_textView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Favorite Fragment"
+            android:gravity="center"
+            android:textSize="35dp"
+            android:textStyle="bold" />-->
+    </LinearLayout>
+
+</FrameLayout>

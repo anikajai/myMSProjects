@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<CheckedTextView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/album_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Medium Text"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="2dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:textStyle="bold"
+            android:paddingLeft="?android:attr/expandableListPreferredItemPaddingLeft"
+            android:background="#ccd9ff"
+            android:cacheColorHint="#ccd9ff"
+            android:textColor="#000" />

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="edu.usc.csci571.searchonfb.HomeFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/colorDetailEmpty">
+
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/post_list_view"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+           />
+        <TextView
+            android:id="@+id/post_no_found"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:text="@string/no_posts"
+            android:textSize="30dp"
+            android:visibility="gone"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="5dp"
+
+            >
+            </TextView>
+    </LinearLayout>
+
+</FrameLayout>

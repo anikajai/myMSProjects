@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/id_appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:titleTextColor="@android:color/white" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <ImageView
+        android:id="@+id/aboutMe_imageView"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:paddingTop="30dp"
+        app:srcCompat="@mipmap/ic_anika_id" />
+
+    <TextView
+        android:id="@+id/aboutMe_textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        android:paddingBottom="16dp"
+        android:paddingLeft="26dp"
+        android:paddingRight="26dp"
+        android:text="Anika Jain"
+        android:textColor="@color/blackColor"
+        android:textSize="40dp" />
+
+
+    <TextView
+        android:id="@+id/aboutMe_textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingBottom="16dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="6881499182"
+        android:textColor="@color/blackColor"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+</LinearLayout>
+
