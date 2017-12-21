@@ -1,0 +1,53 @@
+.navbar-header {
+    text-align: center;
+}
+
+.myHeader {
+	padding-top: 1%;
+}
+.fbsearch {
+	color: #4267b2;
+	vertical-align: top;
+}
+button {
+   border-width: 1px;
+   border-style: outset;
+   cursor:pointer;
+}
+.myButton {
+	border-radius: 0px;
+}
+#searchBar {
+	position: relative;
+	margin-left: 7%;
+}
+#searchInput {
+	border-radius: 0px;
+}
+#clear {
+	position: absolute;
+	color: #4267b2;
+	margin-left: 30%;
+	border-color: #4267b2;
+	width: auto;
+}
+#submit {
+	background-color: #4267b2;
+	color: white;
+}
+.customProgress {
+	text-align: center;
+	width: 60%;
+	margin: auto;
+	margin-top: 10%;
+}
+li.active {
+	background-color: #4267b2;
+	color: white;
+}
+.well {
+	background-color: #e7e5cb;
+	color: #9d9848;
+	border-radius: 2px;
+	margin: 2% 20%;
+}

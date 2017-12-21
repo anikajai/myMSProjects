@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html ng-app="app1">
+	<head>
+		<meta charset="utf-8">
+		<title>FB Search</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="hw8-css.css">
+		<script src="http://code.jquery.com/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.js"></script>
+    	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-animate.min.js"></script>
+    	<script src="myjs.js" type="text/javascript"></script>
+	</head>
+	<body ng-controller="myController" style="position: relative;">
+    	<div >
+		<!--<nav class="navbar" role="navigation">-->
+
+			<div class="row navbar navbar-default myHeader">
+				<div class="navbar-header col-sm-12 col-md-3">
+					<a class="navbar-brand" href="">
+						<span class="fbsearch">FB Search</span>
+					</a>
+				</div>
+					<div id="searchBar" class="input-group col-sm-12 col-md-6">
+							<input type="text" class="form-control" id="searchInput" ng-model="keyword" placeholder="type something...">
+							<span class="input-group-btn buttonsCustom">
+								<button id="submit" type="button" class="btn btn-default myButton" ng-click="submit()">
+								    <span class="glyphicon glyphicon-search"></span>
+								</button>
+								<button id="clear" type="button" class="btn btn-default myButton">
+									Clear
+								</button>
+							</span>
+					</div>
+						  <!--</div>-->
+					<div class="col-md-3">
+					</div>
+						<!--</form>-->
+						<!--</div>-->
+		    		
+		    	</div>
+		    <!--</nav>-->
+		    </div> 
+		
+
+				<ul class="nav nav-tabs nav-justified">
+				  <li ng-class = "{nav-item: true, active: isSelectedTab('user')}"><a href="" ng-click="selectTab('user')">Users</a></li>
+				  <li ng-class = "{nav-item: true, active: isSelectedTab('page')}>"><a href="" ng-click="selectTab('page')">Pages</a></li>
+				  <li ng-class = "{nav-item: true, active: isSelectedTab('event')}"><a href="" ng-click="selectTab('event')">Events</a></li>
+				  <li ng-class = "{nav-item: true, active: isSelectedTab('place')}"><a href="" ng-click="selectTab('place')">Places</a></li>
+				  <li ng-class = "{nav-item: true, active: isSelectedTab('group')}"><a href="" ng-click="selectTab('group')">Groups</a></li>
+				  <li ng-class = "{nav-item: true, active: isSelectedTab('favourite')}"><a href="" ng-click="selectTab('favourite')">Favourites</a></li>
+				</ul>
+				<div class="progress customProgress">
+				  <div class="progress-bar progress-bar-striped active" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+				    <span class="sr-only"></span>
+				  </div>
+				</div>
+				<div id="tableDiv">
+					<div class="well">
+						No Data Found.
+					</div>
+					<table class="table">
+					  <thead>
+					    <tr>
+					      <th>#</th>
+					      <th>Profile Photo</th>
+					      <th>Name</th>
+					      <th>Favourite</th>
+					      <th>Details</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					    <tr>
+					      <th scope="row">1</th>
+					      <td>Mark</td>
+					      <td>Otto</td>
+					      <td>@mdo</td>
+					      <td>@mdo</td>
+					    </tr>
+					  </tbody>
+					</table>
+				</div>
+		</div>
+	</body>
+</html>
